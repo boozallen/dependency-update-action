@@ -1,0 +1,44 @@
+name: 'Dependabatch Action'
+description: 'Runs Dependabatch using GitHub Actions'
+branding:
+  icon: 'lock'
+  color: 'blue'
+
+inputs:
+  dotcom_token:
+    required: false
+    description: 'Personal access token (PAT) for github.com to overcome request limits'
+    default: '${{ github.token }}'
+  repo_name:
+    required: true
+    description: 'Repository name'
+    default: '{{ github.repository }}'
+  directory:
+    description: 'Directory where the base dependency files are'
+    required: true
+    default: "/"
+  package_manager:
+    required: true
+    description: 'Package manager for dependabot'
+  batch_size:
+    description: 'Batch size'
+    required: true
+    default: "1"
+  ghe_token:
+    required: false
+    description: 'Personal access token (PAT) to use for GHE'
+  ghe_hostname:
+    required: false
+    description: 'Hostname for your GHE server'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    GITHUB_ACCESS_TOKEN: ${{ inputs.dotcom_token }}
+    PROJECT_PATH: ${{ inputs.repo_name }}
+    DIRECTORY_PATH: ${{ inputs.directory }}
+    PACKAGE_MANAGER: ${{ inputs.package_manager }}
+    BATCH_SIZE: ${{ inputs.batch_size }}
+    GITHUB_ENTERPRISE_HOSTNAME: ${{ inputs.ghe_hostname }}
+    GITHUB_ENTERPRISE_ACCESS_TOKEN: ${{ inputs.ghe_token }}
