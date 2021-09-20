@@ -1,4 +1,4 @@
-# Dependabatch - batched Dependabot updates using GitHub Actions
+# Batched Dependabot updates using GitHub Actions
 
 This repo contains a GitHub Action for Dependabot, plus some logic to batch dependencies of an arbitrary size into a single PR.
 
