@@ -1,5 +1,5 @@
-name: 'Dependabatch Action'
-description: 'Runs Dependabatch using GitHub Actions'
+name: 'Dependency Update Action'
+description: 'Runs Dependabot, plus some update batching, using GitHub Actions'
 branding:
   icon: 'lock'
   color: 'blue'
